@@ -23,6 +23,11 @@ sudo gitlab-ctl stop
 sudo gitlab-ctl start
 sudo gitlab-ctl reconfigure
 sudo gitlab-ctl stop
+
+sudo echo "gitlab_rails['gitlab_email_from'] = 'git@$hostname'" >> /etc/gitlab/gitlab.rb
+sudo echo "gitlab_rails['gitlab_email_display_name'] = 'GitLab'" >> /etc/gitlab/gitlab.rb
+sudo echo "gitlab_rails['gitlab_email_reply_to'] = 'noreply@$hostname'" >> /etc/gitlab/gitlab.rb
+
 sudo gitlab-ctl start
 
 # =====================
