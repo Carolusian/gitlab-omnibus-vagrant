@@ -14,7 +14,7 @@ sudo update-alternatives --set editor /usr/bin/vim.basic
 
 sudo debconf-set-selections <<< "postfix postfix/mailname string $hostname"
 sudo debconf-set-selections <<< "postfix postfix/main_mailer_type string string 'Internet Site'"
-sudo apt-get install curl openssh-server ca-certificates postfix | 
+sudo apt-get install curl openssh-server ca-certificates postfix -y  
 curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_8.1.3-ce.0_amd64.deb/download"
 sudo dpkg -i gitlab-ce_8.1.3-ce.0_amd64.deb
 
