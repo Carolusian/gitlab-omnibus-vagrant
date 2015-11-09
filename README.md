@@ -2,7 +2,7 @@ GitLab Setup Guide
 ===
 The guide shows a workflow of how to install, backup, restore and upgrade gitlab (community edition).
 
-###Setup 1: Install
+### Setup 1: Install
 We use `vagrant` and `virtualbox` to provide a gitlab installation. Please make sure these two tools are on your server.
 
 Firstly, `git clone` the Vagrantfile and relevant shell scripts from the following repo:
