@@ -6,7 +6,7 @@ The guide shows a workflow of how to install, backup, restore and upgrade gitlab
 We use `vagrant` and `virtualbox` to provide a gitlab installation. Please make sure these two tools are on your server.
 
 Firstly, `git clone` the Vagrantfile and relevant shell scripts from the following repo:
-<pre> <https://github.com/carolusian/gitlab-omnibus-vagrant></pre> 
+> <https://github.com/carolusian/gitlab-omnibus-vagrant> 
 
 Then, provide proper settings of the our gitlab server's IP address and hostname and run `vagrant up`. The sample commands are provided:
 <pre>git clone https://github.com/Carolusian/gitlab-omnibus-vagrant.git  {$desktop-path}/VMs/gitlab
@@ -27,19 +27,19 @@ We should backup both the `GitLab data` and the `vagrant box`
 First, we need to login the guest system:
 <pre>cd {$desktop-path}/VMs/gitlab
 vagrant up
-vagrant ssh
+vagrant ssh</pre>
 Then, we can use GitLab installation's command line tool
-<pre>sudo gitlab-rake gitlab:backup:create
+<pre>sudo gitlab-rake gitlab:backup:create</pre>
 
 The backup file will be `{$TIMESTAMP}_gitlab_backup.tar` in `/var/opt/gitlab/backups/`
 
 Move the backup file to host system.
-<pre> sudo mv /var/opt/gitlab/backups/{$TIMESTAMP}_gitlab_backup.tar /vagrant/
+<pre> sudo mv /var/opt/gitlab/backups/{$TIMESTAMP}_gitlab_backup.tar /vagrant/</pre>
 
 It is recommended to use `cron` job to perform daily backup.
 <pre>sudo su -
 crontab -e
-0 2 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1
+0 2 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1</pre>
 
 The above line schedules backup everyday at 2 AM.
 
@@ -49,7 +49,7 @@ In case we cannot successfully restore gitlab from a "gitlab backup", a packed v
 On the host server:
 <pre>cd {$desktop-path}/VMs/gitlab
 vagrant halt
-vagrant package --output {$DATE}_gitlab_backup.box
+vagrant package --output {$DATE}_gitlab_backup.box</pre>
 
 ### Setup 3: Restore
 #### From `Gitlab data` backup:
@@ -57,14 +57,14 @@ vagrant package --output {$DATE}_gitlab_backup.box
 First, we need to login the guest system:
 <pre>cd {$desktop-path}/VMs/gitlab
 vagrant up
-vagrant ssh
+vagrant ssh</pre>
 
 Copy the backup file to GitLab's backup folder, then:
 <pre>sudo gitlab-ctl stop unicorn
 sudo gitlab-ctl stop sidekiq
 sudo gitlab-rake gitlab:backup:restore BACKUP={$TIMESTAMP}
 sudo gitlab-ctl start
-sudo gitlab-rake gitlab:check SANITIZE=true
+sudo gitlab-rake gitlab:check SANITIZE=true</pre>
 
 #### From `vagrant box`:
 In order to restore from vagrant box using existing Vagrantfile
@@ -75,14 +75,14 @@ vi config.yml   # Then, input original ip addr and original hostname
 vi Vagrantfile  # Then, change vm box to the backup box and comment out shell section
 vagrant up
 vagrant ssh
-sudo gitlab-ctl restart
+sudo gitlab-ctl restart</pre>
 
 Everything shall works fine.
 
 ### Setup 4: Upgrade
 First, `vagrant ssh` to guest system.
 In the guest system, download the latest version of GitLab for ubuntu 14.04.
-<pre>curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_x.x.x-ce.0_amd64.deb/download"
+<pre>curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_x.x.x-ce.0_amd64.deb/download"</pre>
 
 Then, start upgrading by following commands:
 <pre>sudo gitlab-ctl stop unicorn
@@ -90,6 +90,6 @@ sudo gitlab-ctl stop sidekiq
 sudo gitlab-ctl stop nginx
 sudo dpkg -i gitlab-ce_{$VERSION}-ce.0_amd64.deb
 sudo gitlab-ctl reconfigure
-sudo gitlab-ctl restart
+sudo gitlab-ctl restart</pre>
 
 Done!
