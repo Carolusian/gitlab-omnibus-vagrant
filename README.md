@@ -67,7 +67,7 @@ sudo gitlab-ctl start
 sudo gitlab-rake gitlab:check SANITIZE=true</pre>
 
 #### From `vagrant box`:
-In order to restore from vagrant box using existing Vagrantfile
+Using existing Vagrant configuration
 <pre>git clone https://github.com/Carolusian/gitlab-omnibus-vagrant.git  {$desktop-path}/VMs/gitlab_restore
 cd {$desktop-path}/VMs/gitlab_restore
 cp config.yml.dist configy.yml
