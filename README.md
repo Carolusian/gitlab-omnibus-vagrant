@@ -93,3 +93,6 @@ sudo gitlab-ctl reconfigure
 sudo gitlab-ctl restart</pre>
 
 Done!
+
+> NOTE:
+> Always backup before upgrade so that you can restore to previous installation if upgrade fails.
