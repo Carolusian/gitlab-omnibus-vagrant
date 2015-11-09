@@ -6,14 +6,14 @@ The guide shows a workflow of how to install, backup, restore and upgrade gitlab
 We use `vagrant` and `virtualbox` to provide a gitlab installation. Please make sure these two tools are on your server.
 
 Firstly, `git clone` the Vagrantfile and relevant shell scripts from the following repo:
-<pre> <https://github.com/carolusian/gitlab-omnibus-vagrant> 
+<pre> <https://github.com/carolusian/gitlab-omnibus-vagrant></pre> 
 
 Then, provide proper settings of the our gitlab server's IP address and hostname and run `vagrant up`. The sample commands are provided:
 <pre>git clone https://github.com/Carolusian/gitlab-omnibus-vagrant.git  {$desktop-path}/VMs/gitlab
 cd {$desktop-path}/VMs/gitlab
 cp config.yml.dist configy.yml
 vi config.yml   # Then, input ip addr and hostname
-vagrant up
+vagrant up</pre>
 
 If the environment is successfully setup, we can access gitlab through the server's hostname (make sure you have your LAN DNS pointing the hostname to the server's IP). For first time login, we need to update `root` user's password (the default password is `5iveL!fe`).
 
