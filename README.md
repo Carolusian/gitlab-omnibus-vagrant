@@ -53,7 +53,7 @@ vagrant halt
 vagrant package --output {$DATE}_gitlab_backup.box</pre>
 
 Similarly, you can also use `cron` job on the host server to pack vagrant box, e.g.:
-<pre>0 1 * * 6 cd {$Dir}/VMs/gitlab && vagrant halt && vagrant package --OUTPUT $(date +'%Y-%m-%d_gitlab_backup.box') > {$Dir}/VMs/gitlab/backup.log</pre>
+<pre>0 1 * * 6 cd {$desktop-path}/VMs/gitlab && vagrant halt && vagrant package --OUTPUT $(date +'%Y-%m-%d_gitlab_backup.box') > {$desktop-path}/VMs/gitlab/backup.log</pre>
 
 The above line schedules vagrant packaging at 1 AM every Sunday
 
