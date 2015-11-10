@@ -2,7 +2,7 @@ GitLab Setup Guide
 ===
 The guide shows a workflow of how to install, backup, restore and upgrade gitlab (community edition).
 
-###Setup 1: Install
+### Setup 1: Install
 We use `vagrant` and `virtualbox` to provide a gitlab installation. Please make sure these two tools are on your server.
 
 Firstly, `git clone` the Vagrantfile and relevant shell scripts from the following repo:
@@ -39,7 +39,8 @@ Move the backup file to host system.
 It is recommended to use `cron` job to perform daily backup.
 <pre>sudo su -
 crontab -e
-0 2 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1</pre>
+0 2 * * * /opt/gitlab/bin/gitlab-rake gitlab:backup:create CRON=1 > /tmp/gitlab-backup.log
+* * * * * rsync -azvv /var/opt/gitlab/backups /vagrant/backups > /tmp/rsync.log</pre>
 
 The above line schedules backup everyday at 2 AM.
 
