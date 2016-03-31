@@ -52,12 +52,31 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = true
-  
+
     # Customize the amount of memory on the VM:
     vb.memory = "3072"
     vb.cpus = 2
+    file_to_disk = params['file_to_disk']
+
+    if ARGV[0] == "up" && !File.exist?(file_to_disk)
+        vb.customize ['createhd',
+              '--filename', file_to_disk,
+              '--format', 'VDI',
+              '--size', params['disk_size_GB'] * 1024 # 500GB
+              ]
+    end
+    vb.customize [
+        'storageattach', :id,
+        '--storagectl', 'SATAController',
+        '--port', 1, '--device', 0,
+        '--type', 'hdd', '--medium',
+        file_to_disk
+        ]
   end
-  
+
+  # View the documentation for the provider you are using for more
+  # information on available options.
+
   # View the documentation for the provider you are using for more
   # information on available options.
 
@@ -71,6 +90,16 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
+  config.vm.provision "shell" do |s|
+    s.path= "diskpartition.sh"
+  end
+
+  # Backup files and gitlab-ci artifacts will be located in /var/opt,
+  # Make sure you have enough space
+  config.vm.provision "shell",
+    run: "always",
+    inline: "sudo mount -t ext4 /dev/sdb1 /var/opt"
+
   config.vm.provision "shell" do |s|
     s.path = "provision.sh"
     s.args = [params['ip'], params['hostname']]
