@@ -29,7 +29,6 @@ sudo echo "gitlab_rails['gitlab_email_display_name'] = 'GitLab'" >> /etc/gitlab/
 sudo echo "gitlab_rails['gitlab_email_reply_to'] = 'noreply@$hostname'" >> /etc/gitlab/gitlab.rb
 sudo echo "gitlab_rails['backup_keep_time'] = 604800" >> /etc/gitlab/gitlab.rb
 
-
 sudo gitlab-ctl start
 
 # =====================
