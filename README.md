@@ -101,4 +101,6 @@ sudo gitlab-ctl restart</pre>
 Done!
 
 > NOTE:
-> Always backup before upgrade so that you can restore to previous installation if upgrade fails.
+> * Always backup before upgrade so that you can restore to previous installation if upgrade fails.
+> * You can upload you backup files to amazon s3: (https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/raketasks/backup_restore.md)
+> * You can skip artifacts backup by `/opt/gitlab/bin/gitlab-rake gitlab:backup:create SKIP=artifacts`
