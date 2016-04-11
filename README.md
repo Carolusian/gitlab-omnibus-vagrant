@@ -57,6 +57,12 @@ Similarly, you can also use `cron` job on the host server to pack vagrant box, e
 
 The above line schedules vagrant packaging at 1 AM every Sunday
 
+> NOTE:
+> * Always backup before upgrade so that you can restore to previous installation if upgrade fails.
+> * You can upload you backup files to amazon s3: (https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/raketasks/backup_restore.md)
+> * You can skip artifacts backup by `/opt/gitlab/bin/gitlab-rake gitlab:backup:create SKIP=artifacts`
+> * Also backup `/etc/gitlab/gitlab-secrets.json` to avoid issue described in (this issue)[https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/issues/1147]
+
 ### Setup 3: Restore
 #### From `Gitlab data` backup:
 
@@ -85,6 +91,11 @@ sudo gitlab-ctl restart</pre>
 
 Everything shall works fine.
 
+#### Restore `gitlab-secrets.json` ####
+
+* Copy your `gitlab-secrets.json` to `/etc/gitlab/gitlab-secrets.json`
+* Then run `sudo gitlab-ctl reconfigure`
+
 ### Setup 4: Upgrade
 First, `vagrant ssh` to guest system.
 In the guest system, download the latest version of GitLab for ubuntu 14.04.
@@ -100,7 +111,3 @@ sudo gitlab-ctl restart</pre>
 
 Done!
 
-> NOTE:
-> * Always backup before upgrade so that you can restore to previous installation if upgrade fails.
-> * You can upload you backup files to amazon s3: (https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/raketasks/backup_restore.md)
-> * You can skip artifacts backup by `/opt/gitlab/bin/gitlab-rake gitlab:backup:create SKIP=artifacts`
