@@ -111,3 +111,14 @@ sudo gitlab-ctl restart</pre>
 
 Done!
 
+### (Optional) Using Vagrant with AWS EC2
+
+Install Vagrant aws plugin: `vagrant plugin install vagrant-aws`
+
+Add dummy AWS box with: `vagrant box add dummy https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box`
+
+Edit the parameters in `config.yml`
+
+Run `vagrant up`
+
+Assign security group accordingly

@@ -1,0 +1,4 @@
+ip: GITLAB_SERVER_IP
+hostname: GITLAB_HOSTNAME
+file_to_disk: ADDITIONAL_DISK
+disk_size_GB: DISK_SIZE_IN_GB
