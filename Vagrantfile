@@ -81,7 +81,7 @@ Vagrant.configure(2) do |config|
     aws.region = params['AWS_REGION']
     aws.instance_type = params['AWS_INSTANCE_TYPE']
     aws.block_device_mapping = [{ 'DeviceName' => '/dev/sda1', 'Ebs.VolumeSize' => 20 }, { 'DeviceName' => '/dev/sdb', 'Ebs.VolumeSize' => 500 }]
-    aws.ami = "ami-be4a24d9"
+    aws.ami = "ami-5dd8b73a"
     override.ssh.username = "ubuntu"
     override.ssh.private_key_path = params['AWS_PRIVATE_KEY_PATH']
   end
@@ -99,9 +99,9 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell" do |s|
-  #   s.path= "diskpartition.sh"
-  # end
+  config.vm.provision "shell" do |s|
+    s.path= "diskpartition.sh"
+  end
 
   # Backup files and gitlab-ci artifacts will be located in /var/opt,
   # Make sure you have enough space

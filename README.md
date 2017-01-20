@@ -119,6 +119,6 @@ Add dummy AWS box with: `vagrant box add dummy https://github.com/mitchellh/vagr
 
 Edit the parameters in `config.yml`
 
-Run `vagrant up`
+Run `vagrant up --provider=aws`
 
 Assign security group accordingly
