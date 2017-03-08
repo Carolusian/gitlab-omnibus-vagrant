@@ -122,3 +122,7 @@ Edit the parameters in `config.yml`
 Run `vagrant up --provider=aws`
 
 Assign security group accordingly
+
+### (Optional) Using HTTPS for your gitlab site
+
+Follow the instructions there: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md
