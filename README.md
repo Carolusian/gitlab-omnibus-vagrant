@@ -126,3 +126,5 @@ Assign security group accordingly
 ### (Optional) Using HTTPS for your gitlab site
 
 Follow the instructions there: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md
+
+If you have HTTPS enabled, you also need to have your CI runners registered with `--tls-ca-file` configuration. It should be the path to the root certificate of your SSL.
