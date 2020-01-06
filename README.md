@@ -99,7 +99,9 @@ Everything shall works fine.
 ### Setup 4: Upgrade
 First, `vagrant ssh` to guest system.
 In the guest system, download the latest version of GitLab for ubuntu 14.04.
-~~<pre>curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_x.x.x-ce.0_amd64.deb/download"</pre>~~
+<pre>~~curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_x.x.x-ce.0_amd64.deb/download"~~</pre>
+
+For ubuntu 16.04
 <pre>curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/xenial/gitlab-ce_x.x.x-ce.0_amd64.deb/download"</pre>
 
 Then, start upgrading by following commands:
@@ -111,6 +113,8 @@ sudo gitlab-ctl reconfigure
 sudo gitlab-ctl restart</pre>
 
 Done!
+
+> Packages can be downloaded: https://packages.gitlab.com/gitlab/gitlab-ce 
 
 ### (Optional) Using Vagrant with AWS EC2
 
