@@ -99,7 +99,8 @@ Everything shall works fine.
 ### Setup 4: Upgrade
 First, `vagrant ssh` to guest system.
 In the guest system, download the latest version of GitLab for ubuntu 14.04.
-<pre>curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_x.x.x-ce.0_amd64.deb/download"</pre>
+~~<pre>curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/trusty/gitlab-ce_x.x.x-ce.0_amd64.deb/download"</pre>~~
+<pre>curl -LJO "https://packages.gitlab.com/gitlab/gitlab-ce/packages/ubuntu/xenial/gitlab-ce_x.x.x-ce.0_amd64.deb/download"</pre>
 
 Then, start upgrading by following commands:
 <pre>sudo gitlab-ctl stop unicorn
@@ -123,7 +124,11 @@ Run `vagrant up --provider=aws`
 
 Assign security group accordingly
 
-### (Optional) Using HTTPS for your gitlab site
+### Using HTTPS for your gitlab site
+
+* When create and upgrade SSL cert, make sure `redirect to https` is disabled
+
+### (Deprecated) Using HTTPS for your gitlab site
 
 Follow the instructions there: https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/nginx.md
 
